@@ -6,10 +6,11 @@ import java.util.List;
 // Quiz class represents a quiz with a list of questions
 public class Quiz {
     public List<Question> questions;
-    
+    Integer quizID;
 
-    public Quiz(int id) {
+    public Quiz(Integer id) {
         this.questions = new ArrayList<>();
+        this.quizID=id;
     }
 
     public void addQuestion(Question question) {

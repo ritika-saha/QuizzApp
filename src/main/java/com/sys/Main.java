@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import com.opencsv.CSVReader;
@@ -15,14 +16,17 @@ import com.opencsv.exceptions.CsvValidationException;
 public class Main {
 
     public Map<String,String> managerParticipantMap=new HashMap<>();
+    public Map<String , Integer>questionQuizMap=new HashMap<>();
 
     public void quizManagerHandler(QuizManager quizManager){
         Scanner sc=new Scanner(System.in);
          System.out.println("Enter 0 to exit quiz creation ");
         String choice=sc.nextLine();
+        Integer id=1;
         while (choice.equals("0")==false) {
             System.out.println("----------------making new quiz--------------------");
-            quizManager.createQuizwithOption();
+            quizManager.createQuizwithOption(id);
+            id+=1;
             System.out.println("Enter 0 to exit quiz creation ");
             choice=sc.nextLine();
         }
@@ -49,9 +53,9 @@ public class Main {
         } 
     }
 
-    public void writeToCSV() {
+    public void writeToCSV(String csvFilePath) {
         String header[] = { "MANAGER_NAME", "PARTICIPANT_NAME" };
-        String csvFilePath = "FileOps/QuizData.csv";
+        
         try (CSVWriter writer = new CSVWriter(new FileWriter(csvFilePath))) {
             writer.writeNext(header);
             for (Map.Entry<String, String> entry : managerParticipantMap.entrySet()) {
@@ -67,8 +71,27 @@ public class Main {
         }
     }
 
-    public void readFromCSV(){
-        String filePath="FileOps/QuizData.csv";
+    public void writeQuestionsToCSV(String csvFilePath) {
+        String header[] = { "QUESTIONS", "QUIZ_ID" };
+        
+        try (CSVWriter writer = new CSVWriter(new FileWriter(csvFilePath))) {
+            writer.writeNext(header);
+            for (Map.Entry<String, Integer> entry : questionQuizMap.entrySet()) {
+                String key = entry.getKey();
+                Integer i=entry.getValue();
+                String value = i.toString();
+                String data[] = {key,value };
+                writer.writeNext(data);
+            }
+
+            System.out.println("Data Added to CSV File -------------------------------->");
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    public void readFromCSV(String filePath){
+        
          try(CSVReader reader = new CSVReader(new FileReader(filePath))){
             String[] header = reader.readNext();
             System.out.println(Arrays.toString(header));
@@ -107,9 +130,38 @@ public class Main {
         ob.participantHandler(participant3, quizManager2,"Manager 2");
         ob.participantHandler(participant4, quizManager2,"Manager 2");
         ob.participantHandler(participant5, quizManager2, "Manager 2");
+        System.out.println("Writing and reading manager participant data");
+       ob.writeQuestionsToCSV("FileOps/QuizData.csv");
+       ob.readFromCSV("FileOps/QuizData.csv");
 
-       ob.writeToCSV();
-       ob.readFromCSV();
+       ArrayList<Quiz> quizList=quizManager.quizList;
+       for(Quiz quiz:quizList){
+            List<Question> quesKey=quiz.getQuestions();
+            Integer val=quiz.quizID;
+            for(Question q:quesKey){
+                String key=q.getQuestionText();
+                ob.questionQuizMap.put(key, val);
+            }
+       }
+
+       System.out.println("reading and wrting manager1's quiz and question data");
+       ob.writeQuestionsToCSV("FileOps/Manager1QuizData.csv");
+       ob.readFromCSV("FileOps/Manager1QuizData.csv");
+
+       System.out.println("reading and writing manager2 quiz and question data");
+       quizList=quizManager2.quizList;
+       for(Quiz quiz:quizList){
+            List<Question> quesKey=quiz.getQuestions();
+            Integer val=quiz.quizID;
+            for(Question q:quesKey){
+                String key=q.getQuestionText();
+                ob.questionQuizMap.put(key, val);
+            }
+       }
+
+        ob.writeQuestionsToCSV("FileOps/Manager2QuizData.csv");
+       ob.readFromCSV("FileOps/Manager2QuizData.csv");
+
       //sc.close();
     }
 }

@@ -7,11 +7,11 @@ import java.util.Scanner;
 
 // QuizManager class handles quiz-related operations
 public class QuizManager {
-    private Quiz quiz;
+    public Quiz quiz;
     public ArrayList<Quiz> quizList;
 
     public QuizManager() {
-        this.quiz = new Quiz();
+        //this.quiz = new Quiz();
         this.quizList=new ArrayList<>();
     }
 
@@ -22,8 +22,8 @@ public class QuizManager {
         quizList.add(quiz);
     }
 
-    public void createQuizwithOption() {
-        Quiz quiz=new Quiz();
+    public void createQuizwithOption(Integer id) {
+        Quiz quiz=new Quiz(id);
         List<String> options = List.of("Option A", "Option B", "Option C", "Option D");
         Scanner sc=new Scanner(System.in);
         System.out.println("Enter 1 to add question, 2 to delete question , 3 to edit question, 0 to exit");
