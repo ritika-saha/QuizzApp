@@ -19,7 +19,7 @@ public class QuizManager {
 
     public void createQuiz(){
         List<String> options = List.of("Option A", "Option B", "Option C", "Option D");
-        Question question = new Question("What is the capital of France?", options, 1,"because it is");
+        Question question = new Question("What is the capital of France?", options, 1,"because it is","hard");
         quiz.addQuestion(question);
         quizList.add(quiz);
     }
@@ -40,7 +40,9 @@ public class QuizManager {
                         sc.nextLine();
                         System.out.println("Enter explanation for correct option");
                         String explain=sc.nextLine();
-                        Question question = new Question(q, options, correct,explain);    
+                        System.out.println("Enter catogory - hard/moderate/easy");
+                        String category=sc.nextLine();
+                        Question question = new Question(q, options, correct,explain,category);    
                         quiz.addQuestion(question);  
                         System.out.println("Enter 1 to add question, 2 to delete question , 3 to edit question, 0 to exit");
                         choice=sc.nextLine();           
@@ -77,6 +79,9 @@ public class QuizManager {
                             System.out.println("Enter new explaination");
                             String exp=sc.nextLine();
                             ques.correctOptionExplaination=exp;
+                            System.out.println("Enter new catogory");
+                            String cate=sc.nextLine();
+                            ques.category=cate;
                             System.out.println("question edited");
                             quiz.questions=questionList1;
                             break;
@@ -150,6 +155,7 @@ public class QuizManager {
     }
 
     private void displayQuestion(Question question) {
+        System.out.print("-----CATEGORY: "+question.getCategory()+" -----");
         System.out.println(question.getQuestionText());
         List<String> options = question.getOptions();
         for (int i = 0; i < options.size(); i++) {

@@ -7,12 +7,14 @@ public class Question {
     private List<String> options;
     public int correctOption;
     public String correctOptionExplaination;
+    public String category;
 
-    public Question(String questionText, List<String> options, int correctOption,String CorrectOptionExplaination) {
+    public Question(String questionText, List<String> options, int correctOption,String CorrectOptionExplaination,String category) {
         this.questionText = questionText;
         this.options = options;
         this.correctOption = correctOption;
         this.correctOptionExplaination= CorrectOptionExplaination;
+        this.category=category;
     }
 
     public String getQuestionText() {
@@ -29,5 +31,9 @@ public class Question {
 
     public String getCorrectOptionExplaination(){
         return correctOptionExplaination;
+    }
+
+    public String getCategory(){
+        return category;
     }
 }
