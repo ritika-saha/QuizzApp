@@ -48,6 +48,7 @@ public class Main {
     
             quizManager.takeQuiz(participant, ind);
             int s = quizManager.scoreQuiz(participant);
+            quizManager.displayLeaderboard();
         } catch (IncompleteQuizException e) {
             System.out.println("Error: " + e.getMessage());
         } 
@@ -161,6 +162,9 @@ public class Main {
 
         ob.writeQuestionsToCSV("FileOps/Manager2QuizData.csv");
        ob.readFromCSV("FileOps/Manager2QuizData.csv");
+
+       
+
 
       //sc.close();
     }

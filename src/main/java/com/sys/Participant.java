@@ -7,9 +7,11 @@ import java.util.Map;
 public class Participant {
     private String name;
     public Map<Question, Integer> answers;
+    int score;
 
     public Participant(String name) {
         this.name = name;
+        this.score=0;
         this.answers = new HashMap<>();
     }
 
@@ -23,5 +25,13 @@ public class Participant {
 
     public void answerQuestion(Question question, int selectedOption) {
         answers.put(question, selectedOption);
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }

@@ -9,10 +9,12 @@ import java.util.Scanner;
 public class QuizManager {
     public Quiz quiz;
     public ArrayList<Quiz> quizList;
+    private Leaderboard leaderboard;
 
     public QuizManager() {
         //this.quiz = new Quiz();
         this.quizList=new ArrayList<>();
+        this.leaderboard = new Leaderboard();
     }
 
     public void createQuiz(){
@@ -103,6 +105,8 @@ public class QuizManager {
             participant.answerQuestion(question, selectedOption);
             System.out.println("enter 0 to submit quiz or enter 1 to continue");
             option=sc.nextLine();
+            // Update leaderboard after each question
+            leaderboard.updateLeaderboard(participant);
             }
         }
 
@@ -157,6 +161,7 @@ public class QuizManager {
 
         System.out.println("Participant: " + participant.getName());
         System.out.println("Score: " + score + "/" + quiz.getQuestions().size());
+        participant.setScore(score);
         return score;
     }
 
@@ -176,6 +181,10 @@ public class QuizManager {
                 }
             }
         }
+    }
+
+    public void displayLeaderboard() {
+        leaderboard.displayLeaderboard();
     }
 }
 
