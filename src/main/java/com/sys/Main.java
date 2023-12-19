@@ -132,7 +132,7 @@ public class Main {
         ob.participantHandler(participant4, quizManager2,"Manager 2");
         ob.participantHandler(participant5, quizManager2, "Manager 2");
         System.out.println("Writing and reading manager participant data");
-       ob.writeQuestionsToCSV("FileOps/QuizData.csv");
+       ob.writeToCSV("FileOps/QuizData.csv");
        ob.readFromCSV("FileOps/QuizData.csv");
 
        ArrayList<Quiz> quizList=quizManager.quizList;

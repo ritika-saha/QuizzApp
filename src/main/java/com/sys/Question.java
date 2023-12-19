@@ -5,12 +5,14 @@ import java.util.List;
 public class Question {
     public String questionText;
     private List<String> options;
-    private int correctOption;
+    public int correctOption;
+    public String correctOptionExplaination;
 
-    public Question(String questionText, List<String> options, int correctOption) {
+    public Question(String questionText, List<String> options, int correctOption,String CorrectOptionExplaination) {
         this.questionText = questionText;
         this.options = options;
         this.correctOption = correctOption;
+        this.correctOptionExplaination= CorrectOptionExplaination;
     }
 
     public String getQuestionText() {
@@ -23,5 +25,9 @@ public class Question {
 
     public int getCorrectOption() {
         return correctOption;
+    }
+
+    public String getCorrectOptionExplaination(){
+        return correctOptionExplaination;
     }
 }

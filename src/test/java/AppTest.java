@@ -14,9 +14,11 @@ import com.sys.QuizManager;
 public class AppTest {
     @Test
     public void testQuizCreation(){
-        Question question1=new Question("Is plant green ? a:yes, b:no", List.of("1:a","2:b"), 1);
-        Question question2=new Question("Is sky blue ? a:yes, b:no", List.of("1:a","2:b"), 1);
-        Question question3=new Question("Is soil brown ? a:yes, b:no", List.of("1:a","2:b"), 1);
+        
+        Question question1=new Question("Is plant green ? a:yes, b:no", List.of("1:a","2:b"), 1,"sdfsf");
+        Question question2=new Question("Is sky blue ? a:yes, b:no", List.of("1:a","2:b"), 1,"sdfsdfs");
+        Question question3=new Question("Is soil brown ? a:yes, b:no", List.of("1:a","2:b"), 1,"sdfsdf");
+
         Quiz quiz=new Quiz(1);
         quiz.addQuestion(question3);
         quiz.addQuestion(question1);
@@ -28,9 +30,10 @@ public class AppTest {
 
     @Test 
     public void testParticipant(){
-         Question question1=new Question("Is plant green ? a:yes, b:no", List.of("1:a","2:b"), 1);
-        Question question2=new Question("Is sky blue ? a:yes, b:no", List.of("1:a","2:b"), 1);
-        Question question3=new Question("Is soil brown ? a:yes, b:no", List.of("1:a","2:b"), 1);
+             Question question1=new Question("Is plant green ? a:yes, b:no", List.of("1:a","2:b"), 1,"sdfsf");
+        Question question2=new Question("Is sky blue ? a:yes, b:no", List.of("1:a","2:b"), 1,"sdfsdfs");
+        Question question3=new Question("Is soil brown ? a:yes, b:no", List.of("1:a","2:b"), 1,"sdfsdf");
+
         Quiz quiz=new Quiz(1);
         quiz.addQuestion(question3);
         quiz.addQuestion(question1);
@@ -43,9 +46,11 @@ public class AppTest {
 
     @Test
     public void testScore(){
-        Question question1=new Question("Is plant green ? a:yes, b:no", List.of("1:a","2:b"), 1);
-        Question question2=new Question("Is sky blue ? a:yes, b:no", List.of("1:a","2:b"), 1);
-        Question question3=new Question("Is soil brown ? a:yes, b:no", List.of("1:a","2:b"), 1);
+
+             Question question1=new Question("Is plant green ? a:yes, b:no", List.of("1:a","2:b"), 1,"sdfsf");
+        Question question2=new Question("Is sky blue ? a:yes, b:no", List.of("1:a","2:b"), 1,"sdfsdfs");
+        Question question3=new Question("Is soil brown ? a:yes, b:no", List.of("1:a","2:b"), 1,"sdfsdf");
+
         Quiz quiz=new Quiz(1);
         quiz.addQuestion(question3);
         quiz.addQuestion(question1);
@@ -63,9 +68,11 @@ public class AppTest {
 
     @Test
     public void testIncompleteQuiz(){
-        Question question1=new Question("Is plant green ? a:yes, b:no", List.of("1:a","2:b"), 1);
-        Question question2=new Question("Is sky blue ? a:yes, b:no", List.of("1:a","2:b"), 1);
-        Question question3=new Question("Is soil brown ? a:yes, b:no", List.of("1:a","2:b"), 1);
+
+            Question question1=new Question("Is plant green ? a:yes, b:no", List.of("1:a","2:b"), 1,"sdfsf");
+        Question question2=new Question("Is sky blue ? a:yes, b:no", List.of("1:a","2:b"), 1,"sdfsdfs");
+        Question question3=new Question("Is soil brown ? a:yes, b:no", List.of("1:a","2:b"), 1,"sdfsdf");
+
         Quiz quiz=new Quiz(1);
         quiz.addQuestion(question3);
         quiz.addQuestion(question1);
@@ -81,9 +88,11 @@ public class AppTest {
 
     @Test
     public void testMultipleQuiz(){
-        Question question1=new Question("Is plant green ? a:yes, b:no", List.of("1:a","2:b"), 1);
-        Question question2=new Question("Is sky blue ? a:yes, b:no", List.of("1:a","2:b"), 1);
-        Question question3=new Question("Is soil brown ? a:yes, b:no", List.of("1:a","2:b"), 1);
+
+            Question question1=new Question("Is plant green ? a:yes, b:no", List.of("1:a","2:b"), 1,"sdfsf");
+        Question question2=new Question("Is sky blue ? a:yes, b:no", List.of("1:a","2:b"), 1,"sdfsdfs");
+        Question question3=new Question("Is soil brown ? a:yes, b:no", List.of("1:a","2:b"), 1,"sdfsdf");
+
         Quiz quiz=new Quiz(1);
         quiz.addQuestion(question3);
         quiz.addQuestion(question1);
@@ -91,9 +100,10 @@ public class AppTest {
         QuizManager manager=new QuizManager();
         manager.quizList.add(quiz);
 
-        Question question4=new Question("Is plant green ? a:yes, b:no", List.of("1:a","2:b"), 1);
-        Question question5=new Question("Is sky blue ? a:yes, b:no", List.of("1:a","2:b"), 1);
-        Question question6=new Question("Is soil brown ? a:yes, b:no", List.of("1:a","2:b"), 1);
+            Question question4=new Question("Is plant green ? a:yes, b:no", List.of("1:a","2:b"), 1,"sdfsf");
+        Question question5=new Question("Is sky blue ? a:yes, b:no", List.of("1:a","2:b"), 1,"sdfsdfs");
+        Question question6=new Question("Is soil brown ? a:yes, b:no", List.of("1:a","2:b"), 1,"sdfsdf");
+
         Quiz quiz2=new Quiz(2);
         quiz2.addQuestion(question4);
         quiz2.addQuestion(question5);

@@ -19,7 +19,7 @@ public class QuizManager {
 
     public void createQuiz(){
         List<String> options = List.of("Option A", "Option B", "Option C", "Option D");
-        Question question = new Question("What is the capital of France?", options, 1);
+        Question question = new Question("What is the capital of France?", options, 1,"because it is");
         quiz.addQuestion(question);
         quizList.add(quiz);
     }
@@ -35,7 +35,12 @@ public class QuizManager {
                 case "1":
                         System.out.println("Enter Question with options");
                         String q=sc.nextLine();
-                        Question question = new Question(q, options, 1);    
+                        System.out.println("Enter number for correct option form 1 to 4");
+                        int correct=sc.nextInt();
+                        sc.nextLine();
+                        System.out.println("Enter explanation for correct option");
+                        String explain=sc.nextLine();
+                        Question question = new Question(q, options, correct,explain);    
                         quiz.addQuestion(question);  
                         System.out.println("Enter 1 to add question, 2 to delete question , 3 to edit question, 0 to exit");
                         choice=sc.nextLine();           
@@ -65,6 +70,13 @@ public class QuizManager {
                             System.out.println("Enter new question statement");
                             String s=sc.nextLine();
                             ques.questionText=s;
+                            System.out.println("Enter new correct option");
+                            int opt=sc.nextInt();
+                            sc.nextLine();
+                            ques.correctOption=opt;
+                            System.out.println("Enter new explaination");
+                            String exp=sc.nextLine();
+                            ques.correctOptionExplaination=exp;
                             System.out.println("question edited");
                             quiz.questions=questionList1;
                             break;
@@ -156,9 +168,12 @@ public class QuizManager {
             } else {
                 
                 System.out.println("Incorrect answer for question: " + question.getQuestionText());
+                System.out.println("Correct option : "+ question.getCorrectOption());
+                System.out.println("Explanation : "+question.getCorrectOptionExplaination());
             }
         }
 
+        System.out.println("----------------------------FEEDBACK-------------------------");
         System.out.println("Participant: " + participant.getName());
         System.out.println("Score: " + score + "/" + quiz.getQuestions().size());
         participant.setScore(score);
